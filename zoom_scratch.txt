@@ -1,0 +1,29 @@
+# Zoom scratch
+
+#### Overlay method
+
+ffmpeg -i black.jpg -i input.mp4 \
+  -filter_complex " \
+  [0:v]scale=1280:-1[bg]; \
+  [1:v]scale=640:-1:eval=frame[top]; \
+  [bg][top]overlay=enable='between(t,3,6)' \
+  " \
+ output.mp4
+
+#### Zoom-in scale + crop
+
+ffmpeg -i input.mp4 -vf "scale=iw*2:-1, crop=iw/2:ih/2" output.mp4
+
+
+#### Zoom-out with pad
+ffmpeg -i input.mp4 -vf "scale=iw*0.5:ih*0.5,pad=1280:720:(1280-iw)/2:(720-ih)/2" output.mp4
+
+ffmpeg -i black.jpg -i input.mp4 \
+  -filter_complex " \
+  [0:v]scale=1280:-1[bg]; \
+  [1:v]scale=640:-1:eval=frame[top]; \
+  [bg][top]overlay=320:180:enable='between(t,0,5)'[tmp]; \
+  [tmp][1]overlay=enable='not(between(t,0,5))' \
+  " \
+  output.mp4
+

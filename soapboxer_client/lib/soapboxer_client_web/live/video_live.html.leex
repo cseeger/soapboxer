@@ -1,0 +1,39 @@
+<svg id="timeline" phx-click="timeline-clicked" class="timeline">
+  <circle id="timelineMarker" cx="-10" cy="10" r="5" />
+  <g>
+    <line x1="0" x2="100%" y1="10" y2="10" stroke="black" stroke-width="2"/>
+
+    <%= for %{start: s, end: e} <- @edits do %>
+      <g class="cut">
+        <circle
+          cx="<%= position_step(s) %>" cy="10" r="5" />
+        <line
+          x1="<%= position_step(s) %>"
+          x2="<%= position_step(e) %>"
+          y1="10" y2="10"/>
+        <circle
+          cx="<%= position_step(e) %>" cy="10" r="5" />
+      </g>
+    <% end %>
+
+    <%= unless is_nil(@active_edit) do %>
+      <g class="active-edit">
+        <circle
+          cx="<%= position_step(@active_edit.start) %>"
+          cy="10" r="5" />
+        <%= unless is_nil(@active_edit.end) do %>
+          <circle
+            cx="<%= position_step(@active_edit.end) %>"
+            cy="10" r="5" />
+      </g>
+      <% end %>
+    <% end %>
+
+  </g>
+</svg>
+
+<p>
+  <%= if length(@edits) > 0 do %>
+    <%= Jason.encode!(@edits) %>
+  <% end %>
+</p>

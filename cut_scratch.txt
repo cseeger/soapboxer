@@ -1,0 +1,28 @@
+# Cut scratch
+
+ffmpeg \
+-y -i input.mp4 -filter_complex \
+"[0:v]trim=start=0:end=3,setpts=PTS-STARTPTS,format=yuv420p[0v]; \
+[0:a]atrim=start=0:end=3,asetpts=PTS-STARTPTS[0a]; \
+[0:v]trim=start=15:end=18,setpts=PTS-STARTPTS,format=yuv420p[1v]; \
+[0:a]atrim=start=15:end=18,asetpts=PTS-STARTPTS[1a]; \
+[0v][0a][1v][1a]concat=n=2:v=1:a=1[outv][outa]" \
+-map [outv] -map [outa] final.mp4
+
+ffmpeg -i input.mp4 \
+  -vf "select='not(between(t,0,3)+between(t,17,26))',
+       setpts=N/FRAME_RATE/TB" \
+  -af "aselect='not(between(t,0,3)+between(t,17,26))',
+       asetpts=N/SR/TB" final.mp4
+
+
+IEX example
+-----------
+cuts = [
+  %{cut_start: 4, cut_end: 10},
+  %{cut_start: 12, cut_end: 15},
+  %{cut_start: 18, cut_end: 20},
+]
+input = Path.relative_to_cwd("../input.mp4")
+output = Path.relative_to_cwd("../output.mp4")
+Soapboxer.Cut.execute(input, output, cuts)

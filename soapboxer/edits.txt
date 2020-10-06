@@ -1,0 +1,1 @@
+[{"edit_type":"cut","end":8,"start":1},{"edit_type":"cut","end":66,"start":53},{"edit_type":"cut","end":37,"start":17}]
