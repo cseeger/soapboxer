@@ -52,20 +52,20 @@ Example "cut" edit: `{"edit_type": "cut", "end": 10, "start": 5}`
 
 #### Glaring omissions
 
-1. *UI tests* - unfortunately I did not have the time to wrap the UI in tests, which is something I consider vital for production-ready code.
-2. *Additional UI elements* - embellishments such as an HTML5 video player, progress/elapsed tooltips, and other video player chrome were omitted in favor of solidifying the timeline component.  
-3. *Zoom* - I spent a significant amount of time attempting to coerce zoom functionality from the `ffmpeg` command line tool, but was unsuccessful. Given the timeline I’m under, I decided it was better to attempt a minimal full-stack implementation with cut, rather than continue to burn uninformed cycles with `ffmpeg`. 
-4. *Full-stack application vertical* - ideally the application becomes a single code base where the front-end is wired through to the back-end and edits are persisted. This would be a priority were my schedule to allow. 
+1. **UI tests** - unfortunately I did not have the time to wrap the UI in tests, which is something I consider vital for production-ready code.
+2. **Additional UI elements** - embellishments such as an HTML5 video player, progress/elapsed tooltips, and other video player chrome were omitted in favor of solidifying the timeline component.  
+3. **Zoom** - I spent a significant amount of time attempting to coerce zoom functionality from the `ffmpeg` command line tool, but was unsuccessful. Given the timeline I’m under, I decided it was better to attempt a minimal full-stack implementation with cut, rather than continue to burn uninformed cycles with `ffmpeg`. 
+4. **Full-stack application vertical** - ideally the application becomes a single code base where the front-end is wired through to the back-end and edits are persisted. This would be a priority were my schedule to allow. 
 
 #### Learnings
 
-*ffmpeg* - prior to this exercise, I had only very casually used `ffmpeg` to encode videos for mobile devices. Never had I made external calls from application code. That said, I learned quite a lot and would love an opportunity to continue gaining proficiency with the tool. 
+**ffmpeg** - prior to this exercise, I had only very casually used `ffmpeg` to encode videos for mobile devices. Never had I made external calls from application code. That said, I learned quite a lot and would love an opportunity to continue gaining proficiency with the tool. 
 
 Regarding zoom, my attempts were based around the following methods and are available at `./zoom_scratch.txt`:
 
-* *Overlay method*: `filter-complex` of `scale` and `overlay`
-* *Zoom-in scale + crop*:  simple filter of `scale` and `crop`
-* *Zoom-out with pad*: simple filter of `scale` and `pad`
+* **Overlay method**: `filter-complex` of `scale` and `overlay`
+* **Zoom-in scale + crop**:  simple filter of `scale` and `crop`
+* **Zoom-out with pad**: simple filter of `scale` and `pad`
 
 The above commands operate over the entire file by default. Which prevented specify timeline segments, and leading me to believe there is a better way of implementing zoom outside of the command line tool.
 
