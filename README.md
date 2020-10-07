@@ -67,9 +67,9 @@ Regarding zoom, my attempts were based around the following methods and are avai
 * **Zoom-in scale + crop**:  simple filter of `scale` and `crop`
 * **Zoom-out with pad**: simple filter of `scale` and `pad`
 
-The above commands operate over the entire file by default. Which prevented specify timeline segments, and leading me to believe there is a better way of implementing zoom outside of the command line tool.
+The above commands operate over the entire file by default, preventing targeting of individual timeline segments. This leads me to believe there is a better way of implementing zoom outside of the command line tool.
 
-Perhaps the answer here is a NIF directly into `libav*`libraries, or maybe there’s a solution working with the video at the individual frame level.
+Perhaps the answer here is a NIF directly into the `libav*` libraries, or maybe there’s a solution working with the video at the individual frame level.
 
 #### On loose prototype specifications
 
@@ -79,6 +79,6 @@ As for the backend, I hope the `Soapboxer.Cut` module, while admittedly basic, i
 
 #### Thank you!
 
-Thanks for the opportunity to work on this exercise. I learned more about `ffmpeg` than I imagined I would and I certainly enjoyed using `Phoenix.LiveView` . 
+Thank you for the opportunity to work on this exercise. I learned more about `ffmpeg` than I imagined I would and I certainly enjoyed using `Phoenix.LiveView` . 
 
 Please feel free to reach out with any additional question you may have.
