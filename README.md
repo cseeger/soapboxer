@@ -63,9 +63,9 @@ Example "cut" edit: `{"edit_type": "cut", "end": 10, "start": 5}`
 
 Regarding zoom, my attempts were based around the following methods and are available at `./zoom_scratch.txt`:
 
-* _Overlay method_: `filter-complex` of `scale` and `overlay`
-* _Zoom-in scale + crop_:  simple filter of `scale` and `crop`
-* _Zoom-out with pad_: simple filter of `scale` and `pad`
+* *Overlay method*: `filter-complex` of `scale` and `overlay`
+* *Zoom-in scale + crop*:  simple filter of `scale` and `crop`
+* *Zoom-out with pad*: simple filter of `scale` and `pad`
 
 The above commands operate over the entire file by default. Which prevented specify timeline segments, and leading me to believe there is a better way of implementing zoom outside of the command line tool.
 
