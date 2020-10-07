@@ -46,7 +46,7 @@ Edits are represented by a JSON data structure of the following format:
 ]
 ```
 
-Example "cut" edut: `{"edit_type": "cut", "end": 10, "start": 5}`
+Example "cut" edit: `{"edit_type": "cut", "end": 10, "start": 5}`
 
 ### Post-mortem
 
