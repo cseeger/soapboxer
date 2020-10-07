@@ -31,7 +31,7 @@ The following executable is provided:
 ./soapboxer/soapboxer <input_video_path> <edits_json_path>
 ```
 
-Example with repo files: `./soapboxer ../input.mp4 edits.txt`
+Example using existing repo files: `./soapboxer ../input.mp4 edits.txt`
 
 #### Edits file
 
@@ -46,13 +46,15 @@ Edits are represented by a JSON data structure of the following format:
 ]
 ```
 
+Example "cut" edut: `{"edit_type": "cut", "end": 10, "start": 5}`
+
 ### Post-mortem
 
 #### Glaring omissions
 
 1. *UI tests* - unfortunately I did not have the time to wrap the UI in tests, which is something I consider vital for production-ready code.
 2. *Additional UI elements* - embellishments such as an HTML5 video player, progress/elapsed tooltips, and other video player chrome were omitted in favor of solidifying the timeline component.  
-3. *Zoom* - I spent a significant amount of time attempting to coerce zoom functionality from the `ffmpeg` command line tool, but was unsuccessful. Given the timeline I’m under, I decided it was better to attempt a minimal full-stack implementation with cut than continue to burn uninformed cycles with `ffmpeg`. 
+3. *Zoom* - I spent a significant amount of time attempting to coerce zoom functionality from the `ffmpeg` command line tool, but was unsuccessful. Given the timeline I’m under, I decided it was better to attempt a minimal full-stack implementation with cut, rather than continue to burn uninformed cycles with `ffmpeg`. 
 4. *Full-stack application vertical* - ideally the application becomes a single code base where the front-end is wired through to the back-end and edits are persisted. This would be a priority were my schedule to allow. 
 
 #### Learnings
